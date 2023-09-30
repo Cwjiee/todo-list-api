@@ -3,8 +3,7 @@ package main
 import (
 	"log"
 	"github.com/Cwjiee/todo-list-api/src/models"
-	"github.com/Cwjiee/todo-list-api/src/controllers"
-	"github.com/gin-gonic/gin"
+	"github.com/Cwjiee/todo-list-api/src/routes"
 )
 
 func main() {
@@ -14,14 +13,5 @@ func main() {
 	}
 	db.DB()
 
-	route := gin.Default()
-
-	log.Printf("route works fine")
-	route.POST("/todos", controllers.CreateTodo)
-	route.GET("/todos", controllers.GetTodos)
-	route.GET("/todos/:id", controllers.GetTodo)
-	route.PUT("/todos/:id", controllers.UpdateTodo)
-	route.DELETE("/todos/:id", controllers.DeleteTodo)
-
-	route.Run("localhost:8080")
+	routes.Routes()
 }
